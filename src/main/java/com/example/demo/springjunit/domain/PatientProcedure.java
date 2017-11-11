@@ -1,4 +1,4 @@
-package springjunit.domain;
+package com.example.demo.springjunit.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,5 +22,5 @@ public class PatientProcedure implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date date;
     @Column(name="md")
-    private String MD;
+    private String md;
 }

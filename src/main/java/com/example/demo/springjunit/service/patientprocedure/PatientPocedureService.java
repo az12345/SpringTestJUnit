@@ -1,7 +1,7 @@
-package springjunit.service.patientprocedure;
+package com.example.demo.springjunit.service.patientprocedure;
 
-import com.instinctools.padlaboris.domain.PatientProcedure;
-import com.instinctools.padlaboris.domain.PatientProcedure;
+
+import com.example.demo.springjunit.domain.PatientProcedure;
 
 import java.util.Date;
 import java.util.List;
@@ -48,7 +48,12 @@ public interface PatientPocedureService {
      */
     PatientProcedure deleteById(Integer id);
 
-
+    /**
+     *   List<PatientProcedure> getPatientProcedureByDateAfter(Date date) return List patientProcedure after date
+     *
+     * @param date a {@link Date} date
+     */
+    List<PatientProcedure> getPatientProcedureByDateAfter(Date date);
 
 
 }

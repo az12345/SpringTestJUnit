@@ -1,6 +1,8 @@
-package springjunit.service.patientdesiase;
+package com.example.demo.springjunit.service.patientdesiase;
 
-import com.instinctools.padlaboris.domain.PatientDisease;
+
+import com.example.demo.springjunit.domain.PatientDisease;
+import com.example.demo.springjunit.domain.PatientProcedure;
 
 import java.util.Date;
 import java.util.List;
@@ -8,10 +10,10 @@ import java.util.List;
 /**
  * PatientDesiase service
  */
-public interface PatientDesiaseService {
+public interface PatientDiseaseService {
 
     /**
-     * Create PatientDisease due {@link com.instinctools.padlaboris.domain.PatientDisease} entity.
+     * Create PatientDisease due {@link PatientDisease} entity.
      *
      * @param patientDisease a {@link PatientDisease} entity
      * @return created entity

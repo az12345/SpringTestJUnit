@@ -1,14 +1,15 @@
-package springjunit.service.patientprocedure;
+package com.example.demo.springjunit.service.patientprocedure;
 
 
-import com.instinctools.padlaboris.domain.PatientProcedure;
-import com.instinctools.padlaboris.repository.PatientProcedueRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.example.demo.springjunit.domain.PatientProcedure;
+import com.example.demo.springjunit.repository.PatientProcedueRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,7 +17,7 @@ import java.util.Objects;
 @Service
 @Transactional
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class DefaultProcedureService implements PatientPocedureService {
+public class DefaultPatientProcedureService implements PatientPocedureService {
     private final PatientProcedueRepository patientProcedueRepository;
     @Override
     public PatientProcedure create(PatientProcedure patientProcedure) {
@@ -39,9 +40,9 @@ public class DefaultProcedureService implements PatientPocedureService {
        patientProcedueRepository.updateOneById(id,
                 Objects.isNull(patientProcedure.getProcedureName()) ? saveProcedure.getProcedureName() : patientProcedure.getProcedureName(),
                 Objects.isNull(patientProcedure.getDate()) ? saveProcedure.getDate() : patientProcedure.getDate(),
-                Objects.isNull(patientProcedure.getMD()) ? saveProcedure.getMD() : patientProcedure.getMD()
+                Objects.isNull(patientProcedure.getMd()) ? saveProcedure.getMd() : patientProcedure.getMd()
                 );
-        return patientProcedure ;
+        return fetchById(id) ;
     }
 
     @Override
@@ -49,6 +50,10 @@ public class DefaultProcedureService implements PatientPocedureService {
         PatientProcedure patientProcedure = fetchById(id);
         patientProcedueRepository.delete(id);
         return patientProcedure;
+    }
 
+    @Override
+    public List<PatientProcedure> getPatientProcedureByDateAfter(Date date) {
+        return patientProcedueRepository.getPatientProcedureByDateAfter(date);
     }
 }

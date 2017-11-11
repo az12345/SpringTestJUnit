@@ -1,9 +1,7 @@
-package springjunit.domain;
+package com.example.demo.springjunit.domain;
 
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,5 +26,4 @@ public class PatientDisease implements Serializable {
     private String deseaseCode;
     @Column(name="desease_description", length = 132)
     private String deseaseDescription;
-
 }

@@ -4,6 +4,8 @@ spring:
   jpa:
     database: postgresql
     show-sql: true
+    hibernate:
+      ddl-auto: create
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://ec2-23-21-197-231.compute-1.amazonaws.com:5432/d8f6f02hdlefdc?sslmode=require&user=jriznkneriewsk&password=a6819e2d2c04604e2ba298af803af4f9790a6481bc7782e1e7daece9ca9d52a1

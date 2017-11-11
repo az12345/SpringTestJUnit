@@ -1,11 +1,11 @@
-package springjunit.service.patientdesiase;
+package com.example.demo.springjunit.service.patientdesiase;
 
-import com.instinctools.padlaboris.domain.PatientDisease;
-import com.instinctools.padlaboris.repository.PatientDiseaseRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.demo.springjunit.domain.PatientDisease;
+import com.example.demo.springjunit.repository.PatientDiseaseRepository;
 
 import javax.transaction.Transactional;
 import java.util.Date;
@@ -16,7 +16,7 @@ import java.util.Objects;
 @Service
 @Transactional
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class DefaultPatientDesiaseService implements PatientDesiaseService{
+public class DefaultPatientDiseaseService implements PatientDiseaseService {
 
     private final PatientDiseaseRepository patientDiseaseRepository;
 
@@ -37,14 +37,14 @@ public class DefaultPatientDesiaseService implements PatientDesiaseService{
 
     @Override
     public PatientDisease updateById(Integer id, Date startDate, Date endDate, String deseaseCode, String deseaseDescription) {
-        final PatientDisease patientDisease = fetchById(id);
+        final PatientDisease patientDiseaseUpdate = fetchById(id);
         patientDiseaseRepository.updateOneById(id,
-                Objects.isNull(patientDisease.getStartDate()) ? patientDisease.getStartDate() : patientDisease.getStartDate(),
-                Objects.isNull(patientDisease.getEndDate()) ? patientDisease.getEndDate() : patientDisease.getEndDate(),
-                Objects.isNull(patientDisease.getDeseaseCode()) ? patientDisease.getDeseaseCode() : patientDisease.getDeseaseCode(),
-                Objects.isNull(patientDisease.getDeseaseDescription()) ? patientDisease.getDeseaseDescription() : patientDisease.getDeseaseDescription()
+                Objects.isNull(startDate) ? patientDiseaseUpdate.getStartDate() : startDate,
+                Objects.isNull(endDate) ? patientDiseaseUpdate.getEndDate() : endDate,
+                Objects.isNull(deseaseCode) ? patientDiseaseUpdate.getDeseaseCode() : deseaseCode,
+                Objects.isNull(deseaseDescription) ? patientDiseaseUpdate.getDeseaseDescription() : deseaseDescription
         );
-        return patientDisease ;
+        return fetchById(id) ;
     }
 
 
@@ -65,5 +65,6 @@ public class DefaultPatientDesiaseService implements PatientDesiaseService{
     public List<Date> findFinishDateBetween(Date start, Date finish) {
         return patientDiseaseRepository.findEndDateBetween(start,finish);
     }
+
 
 }
